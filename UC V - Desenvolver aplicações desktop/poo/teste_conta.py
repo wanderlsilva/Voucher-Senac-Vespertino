@@ -14,3 +14,9 @@ c3 = Conta('352-7', 'Carla', 300.0, 4000.0)
 c3.deposita(300.0)
 print("Titular : ", c3.titular)
 print("Saldo : ", c3.saldo)
+
+c1.transfere(c3, 50.0)
+print("Titular", c1.titular)
+print("Saldo", c1.saldo)
+
+print("Saldo", c3.saldo)

@@ -23,3 +23,10 @@ class Conta:
         print("Emitindo Extrado na Tela")
         print("numero: {} \nsaldo: {}".format(self.numero, self.saldo))
 
+    def transfere(self, destino, valor):
+        retirou = self.saca(valor)
+        if(retirou == False):
+            return False
+        else:
+            destino.deposita(valor)
+            return True
