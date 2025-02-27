@@ -20,6 +20,8 @@ class Aluno:
         print(f"Nome: {self.nome}, Idade: {self.idade}, Nota: {self.__nota}")
 
 aluno1 = Aluno("Carlos", 17, 8.5)
+#print(aluno1.__nota)
 print(aluno1.get_nota())
 aluno1.set_nota(6.5)
 print(aluno1.get_nota())
+aluno1.exibir_dados()
