@@ -38,7 +38,7 @@ class Moto(Veiculo):
 
 #Criando objetos das subclasses
 carro1 = Carro("Toyota", "Corolla", 2022, 4)
-moto1 = Moto("Honda", "Cb=B 500", 2021, 500)
+moto1 = Moto("Honda", "CB 500", 2021, 500)
 
 print("Dados do Carro:")
 carro1.exibir_dados()
