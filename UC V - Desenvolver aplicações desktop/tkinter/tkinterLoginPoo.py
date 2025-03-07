@@ -19,7 +19,7 @@ class LoginApp(tk.Tk):
         self.senha_entry = tk.Entry(self, show="*")
         self.senha_entry.pack()
 
-        self.login_botao = tk.Button(self, text="Login", command=login)
+        self.login_botao = tk.Button(self, text="Login", command=self.login)
         self.login_botao.pack()
     
     def login(self):
