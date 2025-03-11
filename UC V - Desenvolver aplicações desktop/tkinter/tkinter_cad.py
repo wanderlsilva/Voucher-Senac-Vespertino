@@ -28,7 +28,7 @@ class LoginApp(tk.Tk):
         self.geometry("600x400")
         self.configure(bg="#f0f0f0")
 
-        frame = tk.Frame(self, bg="white", padx=20, pady=20, relief="raised", borderwidth=2)
+        frame = tk.Frame(self, bg="black", padx=20, pady=20, relief="raised", borderwidth=2)
         frame.place(relx=0.5, rely=0.5, anchor="center")
 
         try:
@@ -40,11 +40,11 @@ class LoginApp(tk.Tk):
         except Exception as e:
             print(f"Erro ao carregar imagem: {e}")
 
-        tk.Label(frame, text="Usuário: ", bg="white").pack()
+        tk.Label(frame, text="Usuário: ", bg="black", fg="white").pack()
         self.usuario_entry = tk.Entry(frame)
         self.usuario_entry.pack()
 
-        tk.Label(frame, text="Senha: ", bg="white").pack()
+        tk.Label(frame, text="Senha: ", bg="black", fg="white").pack()
         self.senha_entry = tk.Entry(frame, show="*")
         self.senha_entry.pack()
 
@@ -53,7 +53,7 @@ class LoginApp(tk.Tk):
         self.toggle_botao.pack()
 
         self.login_botao = tk.Button(frame, text="Login", bg="#4CAF50", fg="white", command=self.login)
-        self.login_botao.pack(pady=5)
+        self.login_botao.pack(pady=10)
 
         self.registrar_botao = tk.Button(frame, text="Cadastrar", bg="#008CBA", fg="white", command=self.abrir_tela_cadastro)
         self.registrar_botao.pack()
