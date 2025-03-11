@@ -7,15 +7,16 @@ ARQUIVOS_USUARIOS = "usuarios.txt"
 
 def salvar_usuario(usuario, senha):
     with open(ARQUIVOS_USUARIOS, "a") as f:
-        f.write(f"{usuario}, {senha}\n")
+        f.write(f"{usuario},{senha}\n")
 
 def verificar_usuario(usuario, senha):
     if not os.path.exists(ARQUIVOS_USUARIOS):
         return False
+    
     with open(ARQUIVOS_USUARIOS, 'r') as f:
         for line in f:
-            usuario, senha = line.strip().split(",")
-            if usuario == usuario and senha == senha:
+            user, password = line.strip().split(",")
+            if user == usuario and password == senha:
                 return True
     return False
 
@@ -23,7 +24,7 @@ class LoginApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Tela de Login")
-        self.geometry("300x200")
+        self.geometry("600x400")
 
         tk.Label(self, text="Usuário: ").pack()
         self.usuario_entry = tk.Entry(self)
@@ -33,11 +34,20 @@ class LoginApp(tk.Tk):
         self.senha_entry = tk.Entry(self, show="*")
         self.senha_entry.pack()
 
-        self.login_botao = tk.Button(self, text="Login")
+        self.login_botao = tk.Button(self, text="Login", command=self.login)
         self.login_botao.pack()
 
         self.registrar_botao = tk.Button(self, text="Cadastrar", command=self.abrir_tela_cadastro)
         self.registrar_botao.pack()
+
+    def login(self):
+        usuario = self.usuario_entry.get()
+        senha = self.senha_entry.get()
+
+        if verificar_usuario(usuario, senha):
+            messagebox.showinfo("Login", 'Login Realizado com Sucesso!')
+        else:
+            messagebox.showerror("Erro", "Usuário ou Senha Incorreta!")
     
     def abrir_tela_cadastro(self):
         self.withdraw() #Esconder a tela de login
@@ -47,7 +57,7 @@ class CadastroApp(tk.Toplevel):
     def __init__(self, parent):
         super().__init__(parent)
         self.title("Cadastro de Usuário")
-        self.geometry("300x200")
+        self.geometry("600x400")
 
         tk.Label(self, text="Novo Usuário: ").pack()
         self.usuario_entry = tk.Entry(self)
@@ -57,11 +67,21 @@ class CadastroApp(tk.Toplevel):
         self.senha_entry = tk.Entry(self, show="*")
         self.senha_entry.pack()
 
-        self.registrar_botao = tk.Button(self, text="Cadastrar")
+        self.registrar_botao = tk.Button(self, text="Cadastrar", command=self.cadastrar)
         self.registrar_botao.pack()
 
         self.voltar_botao = tk.Button(self, text="Voltar", command=self.voltar)
         self.voltar_botao.pack()
+    
+    def cadastrar(self):
+        usuario = self.usuario_entry.get()
+        senha = self.senha_entry.get()
+
+        if usuario and senha:
+            salvar_usuario(usuario, senha)
+            messagebox.showinfo("Sucesso", "Usuário cadastrado com sucesso.")
+        else:
+            messagebox.showerror("Erro", "Preencha todos os campos!")
 
     def voltar(self):
         self.destroy() #Fecha a janela de cadastro
