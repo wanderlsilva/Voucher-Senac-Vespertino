@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from PIL import Image, ImageTk #Exibir imagem no tkinter
 import os
 
 #Arquivos onde os usuarios serão salvos
@@ -25,19 +26,36 @@ class LoginApp(tk.Tk):
         super().__init__()
         self.title("Tela de Login")
         self.geometry("600x400")
+        self.configure(bg="#f0f0f0")
 
-        tk.Label(self, text="Usuário: ").pack()
-        self.usuario_entry = tk.Entry(self)
+        frame = tk.Frame(self, bg="white", padx=20, pady=20, relief="raised", borderwidth=2)
+        frame.place(relx=0.5, rely=0.5, anchor="center")
+
+        try:
+            imagem = Image.open("logo.png")
+            imagem = imagem.resize((50, 50), Image.Resampling.LANCZOS)
+            self.imagem_tk = ImageTk.PhotoImage(imagem)
+            self.image_label = tk.Label(self, image=self.imagem_tk, bg="white")
+            self.image_label.pack()
+        except Exception as e:
+            print(f"Erro ao carregar imagem: {e}")
+
+        tk.Label(frame, text="Usuário: ", bg="white").pack()
+        self.usuario_entry = tk.Entry(frame)
         self.usuario_entry.pack()
 
-        tk.Label(self, text="Senha: ").pack()
-        self.senha_entry = tk.Entry(self, show="*")
+        tk.Label(frame, text="Senha: ", bg="white").pack()
+        self.senha_entry = tk.Entry(frame, show="*")
         self.senha_entry.pack()
 
-        self.login_botao = tk.Button(self, text="Login", command=self.login)
-        self.login_botao.pack()
+        self.show_senha = False
+        self.toggle_botao = tk.Button(frame, text="Espiar", command=self.toggle_senha)
+        self.toggle_botao.pack()
 
-        self.registrar_botao = tk.Button(self, text="Cadastrar", command=self.abrir_tela_cadastro)
+        self.login_botao = tk.Button(frame, text="Login", bg="#4CAF50", fg="white", command=self.login)
+        self.login_botao.pack(pady=5)
+
+        self.registrar_botao = tk.Button(frame, text="Cadastrar", bg="#008CBA", fg="white", command=self.abrir_tela_cadastro)
         self.registrar_botao.pack()
 
     def login(self):
@@ -53,11 +71,31 @@ class LoginApp(tk.Tk):
         self.withdraw() #Esconder a tela de login
         CadastroApp(self)
 
+    def toggle_senha(self):
+        if self.show_senha:
+            self.senha_entry.config(show="*")
+        else:
+            self.senha_entry.config(show="")
+        self.show_senha = not self.show_senha
+
 class CadastroApp(tk.Toplevel):
     def __init__(self, parent):
         super().__init__(parent)
         self.title("Cadastro de Usuário")
         self.geometry("600x400")
+        self.configure(bg="#f0f0f0")
+
+        frame = tk.Frame(self, bg="white", padx=20, pady=20, relief="raised", borderwidth=2)
+        frame.place(relx=0.5, rely=0.5, anchor="center")
+
+        try:
+            imagem = Image.open("cadastrar.png")
+            imagem = imagem.resize((100, 100), Image.Resampling.LANCZOS)
+            self.imagem_tk = ImageTk.PhotoImage(imagem)
+            self.image_label = tk.Label(self, image=self.imagem_tk, bg="white")
+            self.image_label.pack()
+        except Exception as e:
+            print(f"Erro ao carregar imagem: {e}")
 
         tk.Label(self, text="Novo Usuário: ").pack()
         self.usuario_entry = tk.Entry(self)
