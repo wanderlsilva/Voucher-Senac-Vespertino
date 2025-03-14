@@ -1,4 +1,0 @@
-Wander, 123
-Admin, 123
-Luiz, 111111
-Admin1,123
