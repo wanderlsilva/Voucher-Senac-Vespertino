@@ -54,7 +54,7 @@ class DashboardApp(tk.Tk):
         self.limpar_tela() #Limpa o conteudo atual da tela
 
         #Titulo da seção Dashboard
-        titulo = tk.Label(self.content_frame, text="Dashboard", font=("Georgia", 16, "Bold"), bg="white")
+        titulo = tk.Label(self.content_frame, text="Dashboard", font=("Georgia", 16, "bold"), bg="white")
         titulo.pack(pady=20) # Adiciona um espaçamento vertical
 
         #Criando um frame para armazenar os cards informativos
@@ -65,6 +65,27 @@ class DashboardApp(tk.Tk):
         self.criar_card(card_frame, "Usuários", "1500", "#3498db") #Card de Usuarios
         self.criar_card(card_frame, "Vendas", "R$ 12.200", "#2ecc71") #Card de Vendas
         self.criar_card(card_frame, "Relatórios", "25 gerados", "#e67e22") #Card de Relatórios
+    
+    def criar_card(self, parent, titulo, valor, cor):
+        #Cria um card de informação colorido
+        card = tk.Frame(parent, bg=cor, width=150, height=100, padx=10, pady=10) #Define o tamanho e a cor do card
+        card.pack(side="left", padx=10, pady=10) #Posiciona os cards lado a lado com espaçamento
+
+        #Adiciona o titulo e o valor dentro do card
+        tk.Label(card, text=titulo, font=("Arial", 12, "bold"), bg=cor, fg="white").pack()
+        tk.Label(card, text=valor, font=("Arial", 16), bg=cor, fg="white").pack()
+    
+    def mostrar_relatorios(self):
+        #Exibe a area de Relatorios
+        self.limpar_tela() #Limpa o conteudo da tela antes de exibir os relatorios
+        titulo = tk.Label(self.content_frame, text="Relatórios", font=("Arial", 16, "bold"), bg="white")
+        titulo.pack(pady=20) #Adiciona um espaçamento vertical
+
+    def mostrar_configuracoes(self):
+        #Exibe a area de Configurações
+        self.limpar_tela() #Limpa o conteudo da tela antes de exibir os relatorios
+        titulo = tk.Label(self.content_frame, text="Configurações", font=("Arial", 16, "bold"), bg="white")
+        titulo.pack(pady=20) #Adiciona um espaçamento vertical
 
 if __name__ == "__main__":
     app = DashboardApp()

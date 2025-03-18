@@ -46,6 +46,7 @@ class LoginApp(tk.Tk):
 
         if verificar_usuario(usuario, senha):
             messagebox.showinfo("Login", 'Login Realizado com Sucesso!')
+            
         else:
             messagebox.showerror("Erro", "Usuário ou Senha Incorreta!")
     
