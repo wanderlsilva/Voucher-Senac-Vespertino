@@ -27,11 +27,13 @@ class DashboardApp(tk.Tk):
         self.img_dashboard = ImageTk.PhotoImage(Image.open("sistema_tkinter/img/dashboard.png").resize((32,32)))
         self.img_relatorio = ImageTk.PhotoImage(Image.open("sistema_tkinter/img/relatorio.png").resize((32,32)))
         self.img_configuracao = ImageTk.PhotoImage(Image.open("sistema_tkinter/img/configuracao.png").resize((32,32)))
+        self.img_sair = ImageTk.PhotoImage(Image.open("sistema_tkinter/img/sair.png").resize((32,32)))
 
         #Criando Botoes do Menu Lateral com Icones
         self.create_sidebar_botao("Dashboard", self.img_dashboard, self.mostrar_dashboard)
         self.create_sidebar_botao("Relatório", self.img_relatorio, self.mostrar_relatorios)
         self.create_sidebar_botao("Configuração", self.img_configuracao, self.mostrar_configuracoes)
+        self.create_sidebar_botao("Sair", self.img_sair, self.sair)
 
         self.mostrar_dashboard() #Exibe o dashboard inicial ao abrir o programa
 
@@ -87,6 +89,6 @@ class DashboardApp(tk.Tk):
         titulo = tk.Label(self.content_frame, text="Configurações", font=("Arial", 16, "bold"), bg="white")
         titulo.pack(pady=20) #Adiciona um espaçamento vertical
 
-if __name__ == "__main__":
-    app = DashboardApp()
-    app.mainloop()
+    def sair(self):
+        self.destroy()
+

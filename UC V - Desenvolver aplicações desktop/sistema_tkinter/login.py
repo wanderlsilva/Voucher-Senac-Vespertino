@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk #Exibir imagem no tkinter
 from cadastro import *
+from dashboard import *
 
 class LoginApp(tk.Tk):
     def __init__(self):
@@ -46,10 +47,11 @@ class LoginApp(tk.Tk):
 
         if verificar_usuario(usuario, senha):
             messagebox.showinfo("Login", 'Login Realizado com Sucesso!')
-            
+            self.destroy()  # Fecha a janela de login
+            DashboardApp()  # Abre a dashboard
         else:
             messagebox.showerror("Erro", "Usuário ou Senha Incorreta!")
-    
+
     def abrir_tela_cadastro(self):
         self.withdraw() #Esconder a tela de login
         CadastroApp(self)
