@@ -1,5 +1,5 @@
-Wander,123
-Admin,123
+Wander,$2b$12$RF.PBkjg.uSn//botFFoeObeLei4Ue8BqobbsNrg0PLtzTKA7CDxW
+Admin,$2b$12$jmdtVYS1DngXxWe7hnaUnuFoowmxOaX5mywVJbzSpqQWPQ4HGLESu
 Teste,123
 Teste2,abc
 Teste3,$2b$12$HXjfBZ.0LDyVIx8X22Hw.eUNoaea8uaAKXyFdFg/A..lsdjmBeNLy
