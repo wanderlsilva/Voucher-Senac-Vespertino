@@ -3,13 +3,16 @@ from tkinter import messagebox
 from PIL import Image, ImageTk #Exibir imagem no tkinter
 import os
 from login import *
+import bcrypt
+
 
 #Arquivos onde os usuarios serão salvos
 ARQUIVOS_USUARIOS = "sistema_tkinter/bd/usuarios.txt"
 
 def salvar_usuario(usuario, senha):
+    hash_senha = bcrypt.hashpw(senha.encode(), bcrypt.gensalt()).decode()
     with open(ARQUIVOS_USUARIOS, "a") as f:
-        f.write(f"{usuario},{senha}\n")
+        f.write(f"{usuario},{hash_senha}\n")
 
 def verificar_usuario(usuario, senha):
     if not os.path.exists(ARQUIVOS_USUARIOS):
@@ -17,8 +20,8 @@ def verificar_usuario(usuario, senha):
     
     with open(ARQUIVOS_USUARIOS, 'r') as f:
         for line in f:
-            user, password = line.strip().split(",")
-            if user == usuario and password == senha:
+            user, hash_pwd = line.strip().split(",")
+            if user == usuario and bcrypt.checkpw(senha.encode(), hash_pwd.encode()):
                 return True
     return False
 
