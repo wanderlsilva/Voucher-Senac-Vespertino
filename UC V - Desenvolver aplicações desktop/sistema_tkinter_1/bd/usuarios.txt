@@ -3,3 +3,4 @@ Admin,$2b$12$jmdtVYS1DngXxWe7hnaUnuFoowmxOaX5mywVJbzSpqQWPQ4HGLESu
 Teste,123
 Teste2,abc
 Teste3,$2b$12$HXjfBZ.0LDyVIx8X22Hw.eUNoaea8uaAKXyFdFg/A..lsdjmBeNLy
+Wander Novo,1234567899,67996317498,$2b$12$kbzhMZJPVxloiWFTDHREvOT575Fc5F882HKQ6G1AceX1QA.44x2ri
