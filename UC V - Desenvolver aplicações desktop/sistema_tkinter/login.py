@@ -58,7 +58,7 @@ class LoginApp(tk.Tk):
 
     def abrir_tela_cadastro(self):
         self.withdraw() #Esconder a tela de login
-        CadastroApp(self)
+        CadastroApp(self) # Abre a tela de Cadastro
 
     def toggle_senha(self):
         if self.show_senha:
@@ -70,4 +70,4 @@ class LoginApp(tk.Tk):
     def abrir_esqueci_senha(self):
     #Abre a tela de recuperação de senha
         self.withdraw() #Esconder a tela de login
-        EsqueciSenhaApp(self)
+        EsqueciSenhaApp(self) # Abre a tela de esqueci senha
