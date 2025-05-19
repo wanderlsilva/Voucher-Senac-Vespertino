@@ -22,9 +22,9 @@ fk_equipamento_medico INT,
 FOREIGN KEY (fk_equipamento_medico) REFERENCES equipamentos_medicos (pk_equipamento_medico)
 );
 
-CREATE TABLE expecialidade(
-pk_expecialidade INT PRIMARY KEY,
-nome VARCHAR(10)
+CREATE TABLE especialidades(
+pk_especialidade INT PRIMARY KEY AUTO_INCREMENT,
+nome_especialidade VARCHAR(10) NOT NULL
 );
 
 -- Renomear uma tabela
@@ -40,3 +40,16 @@ ALTER TABLE especialidade ADD pk_especialidade INT PRIMARY KEY AUTO_INCREMENT;
 -- Excluir um atributo de uma tabela
 ALTER TABLE especialidade DROP COLUMN nome_especialidade;
 ALTER TABLE especialidade DROP COLUMN pk_expecialidade;
+
+CREATE TABLE medicos(
+pk_medico INT PRIMARY KEY AUTO_INCREMENT,
+nome_medico VARCHAR(150) NOT NULL,
+crm VARCHAR(30) NOT NULL,
+email_medico VARCHAR(30) NOT NULL,
+fk_especialidade INT,
+FOREIGN KEY (fk_especialidade) REFERENCES especialidades (pk_especialidade)
+);
+
+-- Adicionando uma chave estrangeira em uma tabela existente
+ALTER TABLE salas_atendimentos ADD COLUMN fk_medico INT;
+ALTER TABLE salas_atendimentos ADD CONSTRAINT fk_medico FOREIGN KEY (fk_medico) REFERENCES medicos(pk_medico);
