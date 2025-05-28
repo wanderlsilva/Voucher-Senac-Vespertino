@@ -57,7 +57,7 @@ def listar_inscricoes():
     conn = conectar()
     cursor = conn.cursor()
     cursor.execute("SELECT P.nome, E.nome, I.data_inscricao FROM inscricao I" \
-    "JOIN partipante P ON i.id_particpante = P.id_participante" \
+    "JOIN partipante P ON I.id_particpante = P.id_participante" \
     "JOIN evento E ON I.id_evento = E.id_evento")
     for (participante, evento, data) in cursor.fetchall():
         print(f"{participante} inscrito em {evento} na data {data}")
@@ -73,7 +73,7 @@ def emitir_certificado():
     conn.commit()
     print("Certificado emitido com sucesso!!!")
     conn.close()
-    
+
 def menu():
     while True:
         print("----- Sistema de Eventos -----")
@@ -82,7 +82,7 @@ def menu():
         print("3 - Listar Eventos")
         print("4 - Inscrever Participante em Evento")
         print("5 - Listar Inscrições")
-        print("Emitir Certificado")
+        print("6 - Emitir Certificado")
         print("0 - Sair")
         opcao = int(input("Escolha a opção: "))
 
@@ -93,11 +93,11 @@ def menu():
         elif opcao == 3:
             listar_eventos()
         elif opcao == 4:
-            print("4")
+            inscrever_participante()
         elif opcao == 5:
-            print("5")
+            listar_inscricoes()
         elif opcao == 6:
-            print("6")
+            emitir_certificado()
         elif opcao == 0:
             print("Saindo...")
         else:
